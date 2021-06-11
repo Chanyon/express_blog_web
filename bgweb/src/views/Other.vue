@@ -180,6 +180,7 @@ export default {
           border-top:8px dashed #403e41;
           border-bottom:8px dashed #403e41;
           img{
+            margin: 20px 0;
             width: 200px;
             height: 200px;
             // border:1px solid #f2f2f2;

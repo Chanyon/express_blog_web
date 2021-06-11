@@ -7,6 +7,7 @@
          <span>创建于{{item.createdAt | date}}</span>
          <span>·</span>
          <span>更新于{{item.updatedAt | date}}</span>
+         <span class="asideleft-top-span">+{{item.articategory}}</span>
        </div>
      </div>
      <div class="asideleft-bottom">
@@ -54,12 +55,16 @@ export default {
         font-size: 14px;
         color: #fcfcfa;
       }
+      .asideleft-top-span{
+        padding-left:20px;
+        font-size: 14px;
+        color: #03a9f4;
+      }
     }
     .asideleft-bottom{
       padding:16px 5px;
       font-size: 16px;
       color: #fcfcfa;
-
     }
   }
 }
