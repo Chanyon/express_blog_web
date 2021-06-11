@@ -1,42 +1,41 @@
 <template>
-  <div class="home">
-    <div class="homelist">
-      <div class="left">
-        <AsideItem :articles="articlesList"></AsideItem>
-        <!-- <div>当前第{{currentPage}}页</div> -->
-        <div class="pagesize">
-          <ul class="pagination">
-            <li @click="prevOrNest(-1)"><span>«</span></li>
-            <li v-for="(item,index) in pages" :key="index" @click="select(item)">
-              <span :class="{active: item === currentPage}">{{item}}</span>
-            </li>
-            <li @click="prevOrNest(1)"><span>»</span></li>
-          </ul>
-        </div>
-      </div>
-      <!-- 分页结束 -->
-      <div class="right">
-       <AsideItemRight>
-         <div slot="top" class="right-top">
-           <img v-if="getImage" :src="getImage">
-           <img v-else src="../assets/logo.png">
-         </div>
-         <div slot="midd" class="right-midd">
-           <h4>分类</h4>
-           <div class="catelist">
-             <div v-for="(item,index) in allArticle" :key="index">
-               <span>{{index}}-{{item.length}}篇</span>
-             </div>
-           </div>
-         </div>
-       </AsideItemRight>
+ <div class="home d-flex justify-center">
+  <div class="homelist d-flex justify-space-between">
+    <div class="left">
+      <AsideItem :articles="articlesList"></AsideItem>
+      <!-- <div>当前第{{currentPage}}页</div> -->
+      <div class="pagesize">
+        <ul class="pagination">
+          <li @click="prevOrNest(-1)"><span>«</span></li>
+          <li v-for="(item,index) in pages" :key="index" @click="select(item)">
+            <span :class="{active: item === currentPage}">{{item}}</span>
+          </li>
+          <li @click="prevOrNest(1)"><span>»</span></li>
+        </ul>
       </div>
     </div>
-  </div>
+    <!-- 分页结束 -->
+    <div class="right">
+     <AsideItemRight>
+       <div slot="top" class="right-top">
+         <img v-if="getImage" :src="getImage">
+         <img v-else src="../assets/logo.png">
+       </div>
+       <div slot="midd" class="right-midd">
+         <h4>分类</h4>
+         <div class="catelist">
+           <div v-for="(item,index) in allArticle" :key="index">
+             <span>{{index}}-{{item.length}}篇</span>
+           </div>
+         </div>
+       </div>
+     </AsideItemRight>
+   </div>
+ </div>
+</div>
 </template>
+
 <script>
-// @ is an alias to /src
-// import axios from 'axios'
 import AsideItem from '../components/common/AsideItemLeft.vue'
 import AsideItemRight from '../components/common/AsideItemRight.vue'
 export default {
@@ -48,7 +47,7 @@ export default {
   data(){
     return{
       currentPage:1,
-      PageSize:6,
+      PageSize:8,
       totalPages:null,
       articlesList:[],
       //
@@ -68,15 +67,6 @@ export default {
     }
   },
   methods:{
-    // getImage(){
-    //   axios.get('https://api.ixiaowai.cn/api/api.php?return=json')
-    //   .then(res =>{
-    //     console.log(res)
-    //   })
-    //   .catch(err =>{
-    //     console.log(err)
-    //   })
-    // },
     random(min,max){
       return Math.floor(Math.random() * (max - min)) + min;
     },
@@ -94,6 +84,10 @@ export default {
         this.currentPage = this.totalPages;
       }
       this.getArticleFeach(this.currentPage,this.PageSize);
+    },
+    async getImageFeach(){
+      const res = await this.$http.get(`/backimages/list`);
+      this.image = res.data.backData
     },
     async getArticleFeach(currentPage,PageSize){
       const res = await this.$http.get(`/articles/list/?currentPage=${currentPage}&PageSize=${PageSize}`);
@@ -156,10 +150,6 @@ export default {
         }
       })  
     },
-    async getImageFeach(){
-      const res = await this.$http.get(`/backimages/list`);
-      this.image = res.data.backData
-    }
   },
   computed: {
     pages() {
@@ -191,14 +181,10 @@ export default {
 
 <style scoped lang="less">
   .home{
-    display: flex;
-    justify-content: center;
     .homelist{
-      width: 1024px;
-      height: 900px;
-      background-color: #2d2a2e;
-      display: flex;
-      justify-content: space-between;
+      width: auto;
+      height: auto;
+      background-color: #263238;
       .left{
           width: 65%;
           margin:10px 40px;

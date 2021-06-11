@@ -1,5 +1,5 @@
 <template>
-  <div class="details">
+  <div class="details d-flex justify-center">
     <div class="details-list">
       <div class="details-list-top">
         <h4>{{detailsList.articlename}}</h4>
@@ -24,11 +24,20 @@
         </div>
       </div>
     </div>
+    <div class="top-bottom hidden-top" :class="{displayTop:isTopActive}" @click="handleTop">
+     <v-icon
+     large
+     color="orange darken-2"
+     >
+     mdi-arrow-up-bold-box-outline
+   </v-icon>
+    </div>
   </div>
 </template>
 
 <script>
 import dayjs from 'dayjs'
+
 export default {
   name: '',
   props: {
@@ -42,16 +51,40 @@ export default {
   data(){
     return{
       detailsList:null,
+      isTopActive:false,
     }
   },
   methods:{
     async getDetails(){
       const res = await this.$http.get(`/articles/details/${this.id}`)
       this.detailsList = res.data.detailsData;
+    },
+    handleScroll(){
+      let scrollTop = window.pageYoffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= 1000) {
+        this.isTopActive = true;
+      }else{
+        this.isTopActive = false;
+      }
+    },
+    handleTop(){
+      let top = window.scrollTop || document.documentElement.scrollTop || document.body.scrollTop;
+      const timetop = setInterval(()=>{
+        window.scrollTop = document.documentElement.scrollTop = document.body.scrollTop = top -= 50;
+        if (top <= 0) {
+          clearInterval(timetop);
+        }
+      },50)
     }
+  },
+  mounted(){
+    window.addEventListener('scroll', this.handleScroll)
   },
   created(){
     this.getDetails();
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
@@ -59,13 +92,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 .details{
-  display: flex;
-  justify-content: center;
   .details-list{
-   width: 1024px;
+   width: 1161px;
    height: auto;
    box-sizing:border-box;
-   background-color: #2d2a2e;
+   background-color:#263238;
    padding:10px 25px;
    .details-list-top{
     color:#fcfcfa;
@@ -111,6 +142,19 @@ export default {
       }
     }
    }
+ }
+ .top-bottom{
+  &.hidden-top{
+    display: none;
+  }
+  &.displayTop{
+    display: block;
+    transition: all 0.5;
+  }
+  position: fixed;
+  top: 700px;
+  right: 16%;
+  cursor: pointer;
  }
 }
 </style>

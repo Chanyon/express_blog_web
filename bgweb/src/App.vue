@@ -1,31 +1,41 @@
 <template>
-  <div id="app">
-    <div class="nav">
-      <Navitem></Navitem>
-    </div>
-    <div>
-      <router-view :key="$route.path"/>
-    </div>
+  <v-app>
+    <v-app-bar
+      app
+      color="primary"
+      dark
+      d-xs-flex
+    >
+    <Navitem></Navitem>
+    </v-app-bar>
+    <v-main>
+      <v-container>
+         <router-view :key="$route.path"/>
+      </v-container>
+    </v-main>
+    <v-footer
+    dark
+    padless
+    >
     <Footer></Footer>
-  </div>
+    </v-footer>
+  </v-app>
 </template>
 
-<script type="text/javascript">
-  import Navitem from './components/common/Navitem.vue'
-  import Footer from './components/common/Footer.vue'
-  export default{
-    components:{
-        Navitem,
-        Footer
-    }
-  }
+<script>
+import Navitem from './components/common/Navitem.vue'
+import Footer from './components/common/Footer.vue'
+export default {
+  name: 'App',
+  components:{
+    Navitem,
+    Footer
+  },
+  data: () => ({
+    //
+  }),
+};
 </script>
-<style lang="less">
-*{
-  margin: 0;
-  padding: 0;
-}
-body{
-  background-color:#212121;
-}
+<style type="text/css">
+@import 'assets/ress.css'
 </style>

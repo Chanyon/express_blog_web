@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <div class="homelist">
+  <div class="home d-flex justify-center">
+    <div class="homelist d-flex justify-space-between">
       <div class="left">
         <AsideItem :articles="articlesList"></AsideItem>
         <!-- <div>当前第{{currentPage}}页</div> -->
@@ -128,14 +128,10 @@ export default {
 
 <style scoped lang="less">
   .home{
-    display: flex;
-    justify-content: center;
     .homelist{
-      width: 1024px;
-      height: 900px;
-      background-color: #2d2a2e;
-      display: flex;
-      justify-content: space-between;
+      width: 100%;
+      height:auto;
+      background-color: #263238;
       .left{
           width: 65%;
           margin:10px 40px;
@@ -182,7 +178,7 @@ export default {
           img{
             margin: 20px 0;
             width: 200px;
-            height: 200px;
+            height: 180px;
             // border:1px solid #f2f2f2;
             // border-radius: 10px;
           }

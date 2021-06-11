@@ -1,3 +1,4 @@
+
 <template>
   <div class="asideleft">
     <div v-for="(item,index) in articles" :key="index" class="asidel-b">
@@ -65,6 +66,7 @@ export default {
       padding:16px 5px;
       font-size: 16px;
       color: #fcfcfa;
+
     }
   }
 }

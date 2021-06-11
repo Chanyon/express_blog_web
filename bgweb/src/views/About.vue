@@ -18,9 +18,9 @@ export default {
     display: flex;
     justify-content: center;
     div{
-      width: 1024px;
+      width: 1161px;
       height: 900px;
-      background-color: #2d2a2e;
+      background-color: #263238;
       text-align: center;
       span{
         display: inline-block;
