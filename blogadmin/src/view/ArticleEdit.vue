@@ -98,7 +98,7 @@
 				const formData = new FormData();
 				formData.append("file", file);
 				const res = await this.$http.post('/upload',formData);
-				Editor.insertEmbed(cursorLocation, "image", res.data.url);
+				Editor.insertEmbed(cursorLocation, "image", res.data.imageurl);
 				resetUploader();
 			},
 		},
