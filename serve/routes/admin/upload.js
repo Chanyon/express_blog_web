@@ -17,7 +17,7 @@ const uploadImage = multer({
 	dest:__dirname+'/../../uploads/images',
 	storage:storage
 })
-const httpURL = 'http://localhost:3000/myuploads/images/';
+const httpURL = 'http://1.14.61.24/myuploads/images/';
 router.post('/upload',uploadImage.single('file'),async (req,res)=>{
 	const imageFile = req.file;
 	// let {size,mimetype} = req.file;
