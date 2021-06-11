@@ -129,7 +129,7 @@ export default {
 <style scoped lang="less">
   .home{
     .homelist{
-      width: 100%;
+      width: auto;
       height:auto;
       background-color: #263238;
       .left{
