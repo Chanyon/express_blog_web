@@ -74,7 +74,7 @@ export default {
         if (top <= 0) {
           clearInterval(timetop);
         }
-      },50)
+      },15)
     }
   },
   mounted(){

@@ -18,8 +18,7 @@
     <div class="right">
      <AsideItemRight>
        <div slot="top" class="right-top">
-         <img v-if="getImage" :src="getImage">
-         <img v-else src="../assets/logo.png">
+         <img :src="getImage">
        </div>
        <div slot="midd" class="right-midd">
          <h4>分类</h4>
@@ -63,13 +62,12 @@ export default {
         koa:[],
         nest:[]
       },
-      image:[],
     }
   },
   methods:{
-    random(min,max){
-      return Math.floor(Math.random() * (max - min)) + min;
-    },
+    // random(min,max){
+    //   return Math.floor(Math.random() * (max - min)) + min;
+    // },
     select(item){
       if (item === this.currentPage) return;
       if (typeof item === 'string') return;
@@ -87,7 +85,7 @@ export default {
     },
     async getImageFeach(){
       const res = await this.$http.get(`/backimages/list`);
-      this.image = res.data.backData
+      this.$store.commit('setImage',res.data.backData)
     },
     async getArticleFeach(currentPage,PageSize){
       const res = await this.$http.get(`/articles/list/?currentPage=${currentPage}&PageSize=${PageSize}`);
@@ -163,12 +161,8 @@ export default {
      }
     return liList;
   },
-  getImage(){
-      let imglen = this.image.length;
-      let rand = this.random(0,imglen);
-      // console.log(r)
-      let url = this.image[rand].imageurl;
-      return url;
+    getImage(){
+      return this.$store.getters.dorandomImage
     }
 },
   created(){

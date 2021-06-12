@@ -10,7 +10,9 @@
     </v-app-bar>
     <v-main>
       <v-container>
-         <router-view :key="$route.path"/>
+        <keep-alive include="ArtiDetails">
+           <router-view :key="$route.path"/>
+        </keep-alive>
       </v-container>
     </v-main>
     <v-footer

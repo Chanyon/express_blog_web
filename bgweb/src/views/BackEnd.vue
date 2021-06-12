@@ -58,9 +58,6 @@ export default {
     }
   },
   methods:{
-     random(min,max){
-      return Math.floor(Math.random() * (max - min)) + min;
-    },
     select(item){
       if (item === this.currentPage) return;
       if (typeof item === 'string') return;
@@ -112,11 +109,7 @@ export default {
     return catename[0].name;
   },
    getImage(){
-      let imglen = this.image.length;
-      let rand = this.random(0,imglen);
-      // console.log(r)
-      let url = this.image[rand].imageurl;
-      return url;
+      return this.$store.getters.dorandomImage
     }
 },
   created(){
@@ -129,7 +122,7 @@ export default {
 <style scoped lang="less">
   .home{
     .homelist{
-      width: auto;
+      width: 1161px;
       height:auto;
       background-color: #263238;
       .left{
