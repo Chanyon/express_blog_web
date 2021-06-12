@@ -1,7 +1,8 @@
 <template>
-  <div class="about">
+  <div class="about d-flex d-sm-flex d-md-flex d-lg-flex justify-center ">
     <div>
-      <span>什么都没有！</span>
+      <span style="color: #41b883;">网站技术栈:</span>
+      <span>前后端分离使用vue2、vuetifyUI、elementUI、express@next、mongodb开发</span>
     </div>
   </div>
 </template>
@@ -15,8 +16,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
   .about{
-    display: flex;
-    justify-content: center;
     div{
       width: 1161px;
       height: 900px;
