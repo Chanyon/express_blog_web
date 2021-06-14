@@ -88,6 +88,11 @@ export default {
      async getImageFeach(){
       const res = await this.$http.get(`/backimages/list`);
       this.image = res.data.backData
+    },
+    setTitle(){
+      if (this.id) {
+        document.title = this.id;
+      }
     }
   },
   computed: {
@@ -115,6 +120,7 @@ export default {
   created(){
     this.getArticleFeach(this.currentPage,this.PageSize);
     this.getImageFeach();
+    this.setTitle();
   },
 }
 </script>

@@ -89,6 +89,11 @@ export default {
       // this.totalPages = res.data.info.allpages;
       // }
     },
+    setTitle(){
+      if (this.id) {
+        document.title = this.id;
+      }
+    }
   },
   computed: {
     pages() {
@@ -115,6 +120,8 @@ export default {
   created(){
     this.getArticleFeach(this.currentPage,this.PageSize);
     this.getImageFeach();
+    this.setTitle();
+
   },
 }
 </script>

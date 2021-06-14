@@ -12,7 +12,10 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta:{
+      title:'首页'
+    }
   },
   {
     path: '/frontend',
@@ -23,7 +26,8 @@ const routes = [
     path: '/frontend/:id',
     name: 'FrontEnd',
     component: FrontEnd,
-    props:true
+    props:true,
+
   },
   {
     path: '/backend',
@@ -39,7 +43,10 @@ const routes = [
    {
     path: '/other',
     name: 'Other',
-    component: Other
+    component: Other,
+    meta:{
+      title:'other'
+    }
   },
   {
     path: '/other/:id',
@@ -56,12 +63,19 @@ const routes = [
   {
     path: '/about',
     name: 'About',
-    component: About
+    component: About,
+    meta:{
+      title:'About me'
+    }
   },
 ]
 
 const router = new VueRouter({
   routes
+})
+router.beforeResolve((to,from,next)=>{
+  document.title = to.meta.title;
+  next();
 })
 
 export default router

@@ -11,14 +11,12 @@
           <span v-else class="identification">#{{detailsList.category[0].name}}</span>
         </div>
       </div>
-      <div class="details-list-body">
-        <div class="details-list-body" v-highlight>
+      <div class="details-list-body" v-highlight>
         <pre>
           <code class="javascript">
             <p v-html="detailsList.description"></p>
           </code>
         </pre>
-      </div>
       </div>
       <!-- 相关文章 -->
       <div class="related">
