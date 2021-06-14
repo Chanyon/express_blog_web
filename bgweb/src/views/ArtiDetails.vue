@@ -12,7 +12,13 @@
         </div>
       </div>
       <div class="details-list-body">
-        <p v-html="detailsList.description"></p>
+        <div class="details-list-body" v-highlight>
+        <pre>
+          <code class="javascript">
+            <p v-html="detailsList.description"></p>
+          </code>
+        </pre>
+      </div>
       </div>
       <!-- 相关文章 -->
       <div class="related">
