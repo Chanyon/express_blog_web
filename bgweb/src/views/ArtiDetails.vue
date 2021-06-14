@@ -79,6 +79,11 @@ export default {
           clearInterval(timetop);
         }
       },15)
+    },
+    setTitle(){
+      if (this.id) {
+        document.title = '文章详情';
+      }
     }
   },
   mounted(){
@@ -86,6 +91,7 @@ export default {
   },
   created(){
     this.getDetails();
+    this.setTitle();
   },
   destroyed () {
     window.removeEventListener('scroll', this.handleScroll)
