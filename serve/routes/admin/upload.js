@@ -14,10 +14,10 @@ let storage =multer.diskStorage({
 	}
 })
 const uploadImage = multer({
-	dest:__dirname+'/../../uploads/images',
+	dest:__dirname+'/../../myuploads/images',
 	storage:storage
 })
-const httpURL = 'http://1.14.61.24/myuploads/images/';
+const httpURL = 'http://127.0.0.1:3000/myuploads/images/';
 router.post('/upload',uploadImage.single('file'),async (req,res)=>{
 	const imageFile = req.file;
 	// let {size,mimetype} = req.file;

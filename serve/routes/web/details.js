@@ -17,7 +17,6 @@ router.get('/articles/details/:id',async(req,res)=>{
 			detailsData
 		})
 	} catch(e) {
-		console.log(e);
 		if (e) {
 			res.send({
 				message:'查询失败',

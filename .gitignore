@@ -1,0 +1,6 @@
+node_modules
+dist
+blogbest
+serve/admin/
+serve/web/
+serve/myupload/images/
